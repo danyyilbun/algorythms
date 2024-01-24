@@ -1,17 +1,20 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 class BiggestWord
 {
     public int counter;
-    public String answer;
+    public StringBuilder answer;
 }
 public class Main {
     public static void main(String[] args) {
+        List<List<Long>> longs = Arrays.asList(Arrays.asList(22222222L,11111111L),Arrays.asList(2L,1L),Arrays.asList(44444444L,22222222L)
+                ,Arrays.asList(33333333L,33333333L));
         System.out.println("aaee".equals(stringCombination("sssuyyyddddasdfdfigsdfgsdfgaaeesfasdf" , 4)));
-
+        System.out.println(comparedLongs(longs));
     }
 
     public static String stringCombination(String combi, int k)
@@ -19,19 +22,19 @@ public class Main {
         BiggestWord biggestWord = new BiggestWord();
         BiggestWord temporary = new BiggestWord();
         biggestWord.counter = 0;
-        biggestWord.answer = "";
+        biggestWord.answer = new StringBuilder();
         Character [] chat = new Character[]{'a', 'e', 'i', 'o', 'u', 'y'};
         ArrayList<Character> letters = new ArrayList<>(Arrays.asList(chat));
         StringBuilder st = new StringBuilder(combi);
         for (int i = 0; i < st.length()-k ; i++) {
-            temporary.answer = "";
+            temporary.answer = new StringBuilder();;
             temporary.counter = 0;
             for (int j = 0; j < k; j++) {
                 //
                 if(letters.contains(st.charAt(j+i)))
                 {
 
-                    temporary.answer+=st.charAt(j+i);
+                    temporary.answer.append(st.charAt(j + i));
                     temporary.counter++;
 
                 }
@@ -42,8 +45,17 @@ public class Main {
                 biggestWord.answer = temporary.answer;
             }
         }
-        System.out.println(biggestWord.answer + biggestWord.counter);
-        return biggestWord.answer;
+        return biggestWord.answer.toString();
+    }
+    public static int comparedLongs(List<List<Long>> listLongs)
+    {
+        for()
+        {
+
+
+
+        }
+        return listLongs.size();
     }
 
 }
