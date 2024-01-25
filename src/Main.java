@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -49,19 +50,55 @@ public class Main {
     }
     public static int comparedLongs(List<List<Long>> listLongs)
     {
-        for()
+        HashSet<Double> hset = new HashSet<Double>();
+        for(List<Long> proportionList : listLongs)
         {
-
-
-
+            hset.add(division(proportionList.get(0),proportionList.get(1)));
         }
-        return listLongs.size();
+        return hset.size();
     }
-    public static double division(Long dividend, Long divisor)
+    public static double division(Long denominator, Long numerator)
     {
+        if (denominator == 0) {
+            throw new ArithmeticException("Cannot divide by zero");
+        }
 
-        return 0d;
+        int sign = (numerator < 0) ^ (denominator < 0) ? -1 : 1;
+        long num = Math.abs((long) numerator);
+        long denom = Math.abs((long) denominator);
 
+        StringBuilder result = new StringBuilder();
+
+        long quotient = num / denom;
+        result.append(quotient);
+
+        long remainder = num % denom;
+        if (remainder > 0) {
+            result.append('.');
+            int decimalPlaces = 0;
+            StringBuilder decimalPart = new StringBuilder();
+
+            while (remainder > 0 && decimalPlaces < 16) {
+                remainder *= 10;
+                long digit = remainder / denom;
+                decimalPart.append(digit);
+                remainder %= denom;
+                decimalPlaces++;
+            }
+
+            result.append(decimalPart);
+            if (remainder > 0) {
+                result.insert(result.indexOf(".") + 1, '(');
+                result.append(')');
+            }
+        }
+
+        // Apply the sign
+        if (sign == -1) {
+            result.insert(0, '-');
+        }
+
+        return Double.parseDouble(result.toString());
     }
 
 }
