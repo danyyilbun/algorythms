@@ -57,5 +57,11 @@ public class Main {
         }
         return listLongs.size();
     }
+    public static double division(Long dividend, Long divisor)
+    {
+
+        return 0d;
+
+    }
 
 }
