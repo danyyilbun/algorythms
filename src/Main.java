@@ -86,6 +86,8 @@ public class Main {
                 decimalPlaces++;
             }
 
+
+
             result.append(decimalPart);
             if (remainder > 0) {
                 result.insert(result.indexOf(".") + 1, '(');
